@@ -31,8 +31,8 @@ public class AllocMem : MonoBehaviour
 		
 		if (lastCollectNum != collCount) {
 			lastCollectNum = collCount;
-			delta = Time.realtimeSinceStartup - lastCollect;
-			lastCollect = Time.realtimeSinceStartup;
+			delta = Time.realtimeSinceStartup - lastCollectTime;
+			lastCollectTime = Time.realtimeSinceStartup;
 			lastDeltaTime = Time.deltaTime;
 			collectAlloc = allocMem;
 		}
@@ -93,8 +93,10 @@ public class AllocMem : MonoBehaviour
 			"Collection space			"+delta.ToString ("0.00")+"s\n"+
 			"Last collect delta			"+lastDeltaTime.ToString ("0.000") + " ("+(1F/lastDeltaTime).ToString ("0.0")+")");*/
 	}
+
+
 	
-	private float lastCollect = 0;
+	private float lastCollectTime = 0;
 	private float lastCollectNum = 0;
 	private float delta = 0;
 	private float lastDeltaTime = 0;
